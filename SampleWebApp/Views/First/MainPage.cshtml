@@ -1,0 +1,23 @@
+﻿<h1>Hi this is the maon page</h1>
+<hr />  
+<h3>   WHat is Razer </h3>
+<h4>   AnyLanguage + HTML </h4>
+
+<hr/>
+<h5>   To add code to html use @@ with ( and )   </h5>
+
+
+
+<hr />  
+@{
+    List<string> names = new List<string>();
+    names.Add("SHivam");
+    names.Add("Ankit");
+    names.Add("Ateeq");
+}
+@foreach(var name in names)
+{   <table>
+    @Html.DisplayFor(n=>name);
+    </table>
+
+}

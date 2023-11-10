@@ -1,0 +1,32 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SampleWebApp.Models
+{
+    public class Person
+    {
+        [Required]
+        public string Aadhar { get; set; }
+        [MaxLength(100)]
+        public string Name { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
+        [Range(18,100)]
+        public int Age { get; set; }
+
+    }
+    public class PersonOperations
+    {
+        private static List<Person> _people = new List<Person>();
+
+        public static List<Person> GetPeople()
+        {
+            if (_people.Count == 0)
+            {
+                _people.Add(new Person() { Aadhar = "1213456", Age = 19, Email = "abc@gmail.com", Name = "Ankitt" });
+                _people.Add(new Person() { Aadhar = "1213457", Age = 19, Email = "abc1@gmail.com", Name = "Ankur" });
+                _people.Add(new Person() { Aadhar = "1213458", Age = 19, Email = "abc2@gmail.com", Name = "Aninket" });
+            }
+            return _people;
+        }
+    }
+}

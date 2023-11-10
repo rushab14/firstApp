@@ -72,5 +72,10 @@ namespace TESTDAL
 
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=testdb; Trusted_Connection=true");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Parent>().Property(p => p.ParentKEY).UseIdentityColumn();
+        }
     }
 }
