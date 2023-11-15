@@ -28,5 +28,11 @@ namespace SampleWebApp.Models
             }
             return _people;
         }
+
+        public static Person SearchOne(string paadh)
+        {
+           var person = GetPeople().Where(p => p.Aadhar == paadh).FirstOrDefault();
+            return person;
+        }
     }
 }
