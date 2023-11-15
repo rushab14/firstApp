@@ -34,5 +34,11 @@ namespace SampleWebApp.Models
            var person = GetPeople().Where(p => p.Aadhar == paadh).FirstOrDefault();
             return person;
         }
+
+        public static List<Person> SearchInAge(int startAge, int endAge)
+        {
+            var res = GetPeople().Where(p => p.Age >= startAge && p.Age <= endAge).ToList();
+            return res;
+        }
     }
 }

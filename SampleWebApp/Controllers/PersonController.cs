@@ -19,6 +19,14 @@ namespace SampleWebApp.Controllers
             return View("SearchOne",found);
 
             }
+        [HttpGet("/people/ofAge/{startAge}/{endAge}")]
+        public IActionResult GetPeopleWithingAge(int startAge , int endAge)
+        
+        {
+            var res = PersonOperations.SearchInAge(startAge,endAge);
+            return View("GetPeopleWithingAge", res);
+        
+        }
         }
     }
 
