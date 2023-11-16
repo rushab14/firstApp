@@ -8,7 +8,10 @@
 
 <p>
     <a asp-action="Create">Create New</a>
-</p>
+    @Html.ActionLink("Search in Age Range", "GetPeopleWithingAge", new {startAge =10 , endAge =50})
+    
+    </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -44,7 +47,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "GetPerson", new {paadh = item.Aadhar }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

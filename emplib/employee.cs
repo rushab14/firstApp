@@ -99,9 +99,9 @@ namespace emplib
 
         static EMpDBContext dBContext = new EMpDBContext();
 
-        public static void Add(string pName, string paadh, string addr)
+        public static void Add(string pName, string paadh)
         {
-            dBContext.People.Add(new EmpDAL.employee() { Name = pName, Aadhaar = paadh, Address = addr , Email = "abc@x.com",Phone = "12323"});
+            dBContext.Employees.Add(new Employee() { Name = pName, Aadhar = paadh ,Designation="intern"});
             dBContext.SaveChanges();
         }
 
@@ -123,12 +123,13 @@ namespace emplib
             dBContext.SaveChanges();
 
         }
-        public static List<EmpDAL.employee> Get()
+        public static List<Employee> Get()
         {
 
+            //dBContext.People.ToList();
             return dBContext.Employees.ToList();
         }
-        public static EmpDAL.employee? SearchOne(string pname)
+        public static Employee SearchOne(string pname)
         {
 
 

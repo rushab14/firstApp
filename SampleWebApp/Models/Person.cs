@@ -40,5 +40,11 @@ namespace SampleWebApp.Models
             var res = GetPeople().Where(p => p.Age >= startAge && p.Age <= endAge).ToList();
             return res;
         }
+
+        public static void CreateNew(Person p)
+        {
+            GetPeople();
+            _people.Add(p);
+        }
     }
 }
