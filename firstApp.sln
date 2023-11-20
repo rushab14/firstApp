@@ -63,6 +63,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "Depe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuredMVC", "SecuredMVC\SecuredMVC.csproj", "{4D5F9239-2967-4338-AA4E-F15B5FAAF44D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSecured", "WebSecured\WebSecured.csproj", "{761D8A69-D5EF-4A13-BF77-EA389F00E96A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTAuthAPI", "JWTAuthAPI\JWTAuthAPI.csproj", "{E1D9B121-05E3-422E-9828-21F74F59A7D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +169,14 @@ Global
 		{4D5F9239-2967-4338-AA4E-F15B5FAAF44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D5F9239-2967-4338-AA4E-F15B5FAAF44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D5F9239-2967-4338-AA4E-F15B5FAAF44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{761D8A69-D5EF-4A13-BF77-EA389F00E96A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761D8A69-D5EF-4A13-BF77-EA389F00E96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761D8A69-D5EF-4A13-BF77-EA389F00E96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761D8A69-D5EF-4A13-BF77-EA389F00E96A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D9B121-05E3-422E-9828-21F74F59A7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D9B121-05E3-422E-9828-21F74F59A7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D9B121-05E3-422E-9828-21F74F59A7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D9B121-05E3-422E-9828-21F74F59A7D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

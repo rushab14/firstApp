@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SecuredMVC.Models;
 using System.Diagnostics;
 
@@ -13,11 +14,14 @@ namespace SecuredMVC.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
+        [HttpGet("/index")]
         public IActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
+        [HttpGet("/privacy")]
         public IActionResult Privacy()
         {
             return View();
