@@ -1,7 +1,5 @@
 ﻿using FirstApi.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace FirstApi.Controllers
 {
@@ -9,13 +7,21 @@ namespace FirstApi.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
+        private IApiLogger _logger;
+        public PersonController(IApiLogger logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet("/api/get")]
         public List<Person> GetPerson()
         {
+            _logger.Log("started logging  ");
+            _logger.Log(" get method api was called");
             return PersonOperations.GetPeople();
         }
         [HttpPost("/api/create")]
-        public IActionResult CreatePerson(Person p)
+        public IActionResult CreatePerson([FromForm] Person p)
         {
             PersonOperations.CreateNew(p);
             return Created($"Person with aadhaar {p.Aadhar} is created",p);
@@ -39,11 +45,14 @@ namespace FirstApi.Controllers
         {
             try
             {
+                _logger.Log("DeletePerson() api was successull");
                 PersonOperations.Delete(aadh);
                 return Ok("deletion successful");
             }
             catch(Exception e)
             {
+                _logger.Log("DeletePerson() api was unsuccessull");
+
                 return NotFound(e.Message);
             }
         }

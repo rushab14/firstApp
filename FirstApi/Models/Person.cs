@@ -71,7 +71,7 @@ namespace FirstApi.Models
                 return true;
             }
             else
-                 throw new Exception("No such record");
+                throw new Exception("No sun");
         }
     }
 }

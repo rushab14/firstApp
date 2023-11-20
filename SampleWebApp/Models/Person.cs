@@ -47,6 +47,34 @@ namespace SampleWebApp.Models
             _people.Add(p);
         }
 
+      
         
+              public static bool Update(string aadh, Person p)
+            {
+                var found = GetPeople().Where(p => p.Aadhar == aadh).FirstOrDefault();
+                if (found != null)
+                {
+                    found.Name = p.Name;
+                    found.Email = p.Email;
+                    found.Age = p.Age;
+
+                    return true;
+                }
+                else
+                    throw new Exception("No such record");
+            }
+
+            public static bool Delete(string aadh)
+            {
+                var found = GetPeople().Where(p => p.Aadhar == aadh).FirstOrDefault();
+                if (found != null)
+                {
+                    GetPeople().Remove(found);
+                    return true;
+                }
+                else
+                    throw new Exception("No such record");
+            }
+        }
     }
-}
+
