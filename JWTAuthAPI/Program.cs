@@ -1,6 +1,14 @@
 //verification of tokens happen here
+
+
+//order in which the configurations are written matter 
+//blindy copy paste 
+
+
+
 using JWTAuthAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -8,23 +16,54 @@ var builder = WebApplication.CreateBuilder(args);  //new object of web api app
 
 var tokenKey = builder.Configuration.GetValue<string>("TokenKey"); 
 var key = Encoding.ASCII.GetBytes(tokenKey);
-
 builder.Services.AddAuthentication(x =>
+
 {
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;  //understand 
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;     //challenge
+
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
 })
-.AddJwtBearer(x => { x.RequireHttpsMetadata = false; x.SaveToken = true;
-x.TokenValidationParameters = new TokenValidationParameters {
-    ValidateIssuerSigningKey = true,
-    IssuerSigningKey = new SymmetricSecurityKey(key),
-    ValidateIssuer = false, 
-    ValidateAudience = false
-};
-}
-);
+
+.AddJwtBearer(x =>
+
+{
+
+    x.RequireHttpsMetadata = false;
+
+    x.SaveToken = true;
+
+    x.TokenValidationParameters = new TokenValidationParameters
+
+    {
+
+        ValidateIssuerSigningKey = true,
+
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+
+        ValidateIssuer = false,
+
+        ValidateAudience = false
+
+    };
+
+});
+
+
 
 builder.Services.AddSingleton<IJWTAuthenticationManager>(new JWTAuthenticationManager(tokenKey));
+
+        
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+        .AllowAnyMethod();
+    });
+});
+
 
 // Add services to the container.
 
@@ -43,10 +82,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors();
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
-app.UseAuthentication(); 
-
 app.Run();

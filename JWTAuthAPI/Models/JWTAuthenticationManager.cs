@@ -5,15 +5,21 @@ using System.Text;
 
 namespace JWTAuthAPI.Models
 {
-    public interface IJWTAuthenticationManager
-    {
-        string Authenticate(string username, string password);
 
+    public interface IJWTAuthenticationManager
+
+    {
+
+        string Authenticate(string username, string password);
 
     }
 
+
+
     public class JWTAuthenticationManager : IJWTAuthenticationManager
+
     {
+
         IDictionary<string, string> users = new Dictionary<string, string>
 
         {
@@ -59,13 +65,17 @@ namespace JWTAuthAPI.Models
             var key = Encoding.ASCII.GetBytes(tokenKey);
 
             var tokenDescriptor = new SecurityTokenDescriptor
+
             {
+
                 Subject = new ClaimsIdentity(new Claim[]
+
                 {
 
                     new Claim(ClaimTypes.Name, username)
 
                 }),
+
 
                 Expires = DateTime.UtcNow.AddHours(1),
 
@@ -80,6 +90,10 @@ namespace JWTAuthAPI.Models
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
+
         }
+
     }
 }
+
+
